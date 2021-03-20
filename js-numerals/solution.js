@@ -1,13 +1,13 @@
 const globals = require('./globals');
 
 function solveForOneDigit(num) {
-    if (typeof num !== 'number') {
+    if (typeof Number(num) !== 'number') {
         throw new Error('Should have a number param');
     }
-    return num > 0 ? `${globals.NAMES_OF_DIGITS_BELOW_HUNDRED[num]}` : '';
+    return `${globals.NAMES_OF_DIGITS_BELOW_HUNDRED[num]}`;
 }
-function solveForTwoDigits(num = 0) {
-    if (typeof num !== 'number') {
+function solveForTwoDigits(num) {
+    if (typeof Number(num) !== 'number') {
         throw new Error('Should have a number param');
     }
     if (num < 20) {
@@ -18,17 +18,12 @@ function solveForTwoDigits(num = 0) {
     let numWithoutSecondDigit = firstDigit*10;
     return (`${globals.NAMES_OF_DIGITS_BELOW_HUNDRED[numWithoutSecondDigit]} ${solveForOneDigit(secondDigit)}`).trim();
 }
-function solveForThreeDigits(num = 0) {
+function solveForThreeDigits(num) {
     let firstDigit = Number(num.toString().charAt(0));
     let twoDigitsNum = Number(num.toString().substr(1));
     return (`${globals.NAMES_OF_DIGITS_BELOW_HUNDRED[firstDigit]} ${globals.THREE_DIGITS_NAME} ${solveForTwoDigits(twoDigitsNum)}`)
 }
-const solvers = {
-    1: solveForOneDigit,
-    2: solveForTwoDigits,
-    3: solveForThreeDigits
-};
-function solveForN(num = 0) {
+function solveForN(num) {
     num = num.toString();
     let answer = '';
     const nameOfNumberWithDigitCount = globals.NAMES_OF_NUMBERS_WITH_THEIR_DIGIT_COUNT;
@@ -51,7 +46,7 @@ function solveForN(num = 0) {
         nameOfNumber = nameOfNumberWithDigitCount[currentNumberLength] || 
         nameOfNumberWithDigitCount[currentNumberLength-1] || nameOfNumberWithDigitCount[currentNumberLength-2];
 
-        answer+= ` ${solverFunction(Number(valueToSend))} ${nameOfNumber}`;
+        answer+= ` ${solverFunction(Number(valueToSend))} ${nameOfNumber} and`;
         num = num.substr(numberOfDigitsToDismiss);
     }
     answer+= ` ${solveForNumbersBelow4Digits(Number(num))}`;
@@ -62,13 +57,20 @@ function solveForNumbersBelow4Digits(num) {
     let solverFunction = solvers[lengthOfNum];
     return solverFunction(num);
 }
-function main(num = 0) {
+const solvers = {
+    1: solveForOneDigit,
+    2: solveForTwoDigits,
+    3: solveForThreeDigits
+};
+function numberToWords(num) {
+    if (Number(num) === 0) { 
+        return 'zero';
+    }
+    num = String(num);
+    num = num.replace(/^0+/, '');
     let lengthOfNum = num.toString().length;
     let solverFunction = solvers[lengthOfNum] ?? solveForN;
     return solverFunction(num);
 }
 
-let tests = [
-    "992345661212121212121234566121212121212123456612121212121123456789098098",
-];
-tests.forEach(t => console.log(main(t)));
+module.exports = numberToWords;
