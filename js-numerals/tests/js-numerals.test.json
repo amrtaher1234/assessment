@@ -1,5 +1,5 @@
 {
-    "oneDigitsTests": [
+    "nDigitsTests": [
         {
             "number": "1",
             "expectedResult": "one"
@@ -11,19 +11,15 @@
         {
             "number": "0",
             "expectedResult": "zero"
-        }
-    ],
-    "twoDigitsTests": [
+        },
         {
             "number": "99",
             "expectedResult": "ninty nine"
         },
         {
             "number": "12",
-            "expectedResult": "twelve"
-        }
-    ],
-    "nDigitsTests": [
+            "expectedResult": "tweleve"
+        },
         {
             "number": "000000000000000000000000000000000123",
             "expectedResult": "one hundred twenty three"
@@ -43,6 +39,28 @@
         {
             "number": "-100",
             "expectedResult": "negative one hundred"
+        }
+    ],
+    "invalidTests": [
+        {
+            "number": "-",
+            "expectedResult": "Invalid Number"
+        },
+        {
+            "number": "-3 3",
+            "expectedResult": "Invalid Number"
+        },
+        {
+            "number": " ",
+            "expectedResult": "Invalid Number"
+        },
+        {
+            "number" : "",
+            "expectedResult": ""
+        },
+        {
+            "number" : "12345678911234567891123456789112345678911234567891123456789112345678911234567891123456789112345678911234567891",
+            "expectedResult": "Input should be less than 72 chars as digit names in wikipedia is only up to duovigintillion!"
         }
     ]
 }
