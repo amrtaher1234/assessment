@@ -16,7 +16,7 @@ function solveForTwoDigits(num) {
     let firstDigit = Number(num.toString().charAt(0));
     let secondDigit = Number(num.toString().charAt(1));
     let numWithoutSecondDigit = firstDigit*10;
-    return (`${globals.NAMES_OF_DIGITS_BELOW_HUNDRED[numWithoutSecondDigit]} ${solveForOneDigit(secondDigit)}`).trim();
+    return (`${globals.NAMES_OF_DIGITS_BELOW_HUNDRED[numWithoutSecondDigit]} ${solveForOneDigit(secondDigit)}`);
 }
 function solveForThreeDigits(num) {
     let firstDigit = Number(num.toString().charAt(0));
@@ -24,7 +24,6 @@ function solveForThreeDigits(num) {
     return (`${globals.NAMES_OF_DIGITS_BELOW_HUNDRED[firstDigit]} ${globals.THREE_DIGITS_NAME} ${solveForTwoDigits(twoDigitsNum)}`)
 }
 function solveForN(num) {
-    num = num.toString();
     let answer = '';
     const nameOfNumberWithDigitCount = globals.NAMES_OF_NUMBERS_WITH_THEIR_DIGIT_COUNT;
     while(num.length > 3) {
@@ -49,28 +48,29 @@ function solveForN(num) {
         answer+= ` ${solverFunction(Number(valueToSend))} ${nameOfNumber} and`;
         num = num.substr(numberOfDigitsToDismiss);
     }
-    answer+= ` ${solveForNumbersBelow4Digits(Number(num))}`;
-    return answer.trim();
-}
-function solveForNumbersBelow4Digits(num) {
-    let lengthOfNum = num.toString().length;
+    let lengthOfNum = num.length;
     let solverFunction = solvers[lengthOfNum];
-    return solverFunction(num);
+    answer+= ` ${solverFunction(num)}`;
+    return answer;
 }
 const solvers = {
     1: solveForOneDigit,
     2: solveForTwoDigits,
     3: solveForThreeDigits
 };
+
 function numberToWords(num) {
     if (Number(num) === 0) { 
         return 'zero';
     }
+    let delimter = '';
     num = String(num);
+    if (num.charAt(0) === '-') {
+        num = num.substr(1);
+        delimter = 'negative ';
+    }
     num = num.replace(/^0+/, '');
-    let lengthOfNum = num.toString().length;
-    let solverFunction = solvers[lengthOfNum] ?? solveForN;
-    return solverFunction(num);
+    return delimter + solveForN(num).trim();
 }
 
 module.exports = numberToWords;
