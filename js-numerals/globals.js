@@ -56,6 +56,11 @@ let NAMES_OF_NUMBERS_WITH_THEIR_DIGIT_COUNT = {
     90: "ninty",
   };
 
-  exports.NAMES_OF_DIGITS_BELOW_HUNDRED = NAMES_OF_DIGITS_BELOW_HUNDRED;
-  exports.NAMES_OF_NUMBERS_WITH_THEIR_DIGIT_COUNT = NAMES_OF_NUMBERS_WITH_THEIR_DIGIT_COUNT;
-  exports.THREE_DIGITS_NAME = 'hundred';
+  var globals = {
+    NAMES_OF_DIGITS_BELOW_HUNDRED,
+    NAMES_OF_NUMBERS_WITH_THEIR_DIGIT_COUNT,
+    THREE_DIGITS_NAME: 'hundred',
+  }
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = globals
+  }
