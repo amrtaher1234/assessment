@@ -33,8 +33,16 @@
             "expectedResult": "one hundred twenty three"
         },
         {
+            "number": "200",
+            "expectedResult": "two hundred"
+        },
+        {
             "number": "9999",
             "expectedResult": "nine thousand and nine hundred ninty nine"
+        },
+        {
+            "number": "-100",
+            "expectedResult": "negative one hundred"
         }
     ]
 }
