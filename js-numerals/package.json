@@ -1,0 +1,17 @@
+{
+  "name": "js-numerals",
+  "version": "1.0.0",
+  "description": "- Fork this project.\r - Write tests.\r - Don't use external libraries for the conversion.\r - Commit the important milestones and not just the final result.",
+  "main": "solution.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  },
+  "dependencies": {
+    "@types/jest": "^26.0.21"
+  }
+}
