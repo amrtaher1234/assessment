@@ -1,0 +1,40 @@
+{
+    "oneDigitsTests": [
+        {
+            "number": "1",
+            "expectedResult": "one"
+        },
+        {
+            "number": "9",
+            "expectedResult": "nine"
+        }, 
+        {
+            "number": "0",
+            "expectedResult": "zero"
+        }
+    ],
+    "twoDigitsTests": [
+        {
+            "number": "99",
+            "expectedResult": "ninty nine"
+        },
+        {
+            "number": "12",
+            "expectedResult": "twelve"
+        }
+    ],
+    "nDigitsTests": [
+        {
+            "number": "000000000000000000000000000000000123",
+            "expectedResult": "one hundred twenty three"
+        },
+        {
+            "number": 123,
+            "expectedResult": "one hundred twenty three"
+        },
+        {
+            "number": "9999",
+            "expectedResult": "nine thousand and nine hundred ninty nine"
+        }
+    ]
+}
