@@ -1,6 +1,5 @@
 // data fetched from wiki-crawler.js script from this site https://en.wikipedia.org/wiki/Power_of_10
 let NAMES_OF_NUMBERS_WITH_THEIR_DIGIT_COUNT = {
-    3: "hundered",
     4: "thousand",
     7: "million",
     10: "billion",
