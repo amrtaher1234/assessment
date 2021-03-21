@@ -25,6 +25,9 @@ function solveForThreeDigits(num) {
   } ${solveForTwoDigits(twoDigitsNum)}`;
 }
 function solveForN(num) {
+  if (!num || !num.length) {
+    return '';
+  }
   let answer = "";
   const nameOfNumberWithDigitCount =
     globals.NAMES_OF_NUMBERS_WITH_THEIR_DIGIT_COUNT;
@@ -57,14 +60,13 @@ function solveForN(num) {
   answer += ` ${solverFunction(num)}`;
   return answer;
 }
-function solveForAfterDecimal(num) { // 1233
+function solveForAfterDecimal(num) {
   num = helpers.removeTrailingZeros(num);
   if (!num.length) return '';
   let numLength = num.length + 1; // for the decimal point = 5
   let delimter = '';
   let digitNameIndex = numLength ;
-  let answer = `${solveForN(num)}`;
-  
+  let answer = `${solveForN(helpers.removeLeadingZeros(num))}`;
   if (globals.NAMES_OF_NUMBERS_WITH_THEIR_DIGIT_COUNT[digitNameIndex]) {
     digitNameIndex = numLength;
   }
@@ -99,32 +101,32 @@ function validateInput(num) {
   }
   return result;
 }
-function numberToWords(num) {
+function numberToWords(num = '') {
   num = String(num);
   const validationResult = validateInput(num);
   if (validationResult.error) {
     return validationResult.message;
   }
   if (!num.length) return "";
+  if (parseFloat(num) === 0) {
+    return "zero";
+  }
+  let afterDecimalNumber = num.split('.')[1] || '';
+  num = num.split('.')[0];
   let delimter = "";
   if (num.charAt(0) === "-") {
     num = num.substr(1);
-    delimter = "negative ";
+    delimter = "negative";
   }
-  if (Number(num) === 0) {
-    return "zero";
-  }
-  num = num.replace(/^0+/, "");
-  return delimter + solveForN(num).trim();
+  num = helpers.removeLeadingZeros(num);
+  let wholeNumberWords = `${delimter}${solveForN(num)}`.trim();
+  let afterDecimalPointWords = solveForAfterDecimal(afterDecimalNumber);
+  let seperator = wholeNumberWords.length && afterDecimalPointWords.length ? ' (and.)' : '';
+  return `${wholeNumberWords}${seperator}${afterDecimalPointWords}`.trim();
 }
-
 if (typeof require !== "undefined" && typeof module !== "undefined") {
   module.exports = {
     numberToWords,
     solveForAfterDecimal
   };
 }
-
-//one thousand two hundred thirty-three ten-thousandths
-//one thousand and two hundred thirty three hundered-hundredths
-console.log(solveForAfterDecimal("1233000"))
