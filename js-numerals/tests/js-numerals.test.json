@@ -66,7 +66,19 @@
     "decimalTests": [
         {
             "number" : "1.223",
-            "expectedResult": "one and two hundred twenty three thousandths"
+            "expectedResult": "one (and.) two hundred twenty three thousandths"
+        },
+        {
+            "number" : ".1",
+            "expectedResult": "one tenths"
+        },
+        {
+            "number": "1123.000012310000000000",
+            "expectedResult": "one thousand and one hundred twenty three (and.) one thousand and two hundred thirty one hundered-millionths"
+        },
+        {
+            "number": "-0.",
+            "expectedResult": "zero"
         }
     ]
 }
