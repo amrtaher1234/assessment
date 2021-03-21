@@ -1,5 +1,6 @@
 if (typeof require !== "undefined" && typeof require !== null) {
   var globals = require("./globals");
+  var helpers = require("./helpers");
 }
 
 function solveForOneDigit(num) {
@@ -56,6 +57,27 @@ function solveForN(num) {
   answer += ` ${solverFunction(num)}`;
   return answer;
 }
+function solveForAfterDecimal(num) { // 1233
+  num = helpers.removeTrailingZeros(num);
+  if (!num.length) return '';
+  let numLength = num.length + 1; // for the decimal point = 5
+  let delimter = '';
+  let digitNameIndex = numLength ;
+  let answer = `${solveForN(num)}`;
+  
+  if (globals.NAMES_OF_NUMBERS_WITH_THEIR_DIGIT_COUNT[digitNameIndex]) {
+    digitNameIndex = numLength;
+  }
+  else if (globals.NAMES_OF_NUMBERS_WITH_THEIR_DIGIT_COUNT[digitNameIndex -1]) {
+    delimter = 'ten-';
+    digitNameIndex -=1;
+  } else {
+    delimter = 'hundered-'
+    digitNameIndex -=2;
+  }
+  answer += ` ${delimter}${globals.NAMES_OF_NUMBERS_WITH_THEIR_DIGIT_COUNT[digitNameIndex]}ths`;
+  return answer;
+}
 const solvers = {
   1: solveForOneDigit,
   2: solveForTwoDigits,
@@ -66,7 +88,7 @@ function validateInput(num) {
     error: false,
     message: "",
   };
-  if (num.trim().length !== num.length || !Number.isInteger(Number(num))) {
+  if (num.trim().length !== num.length || !Number.isFinite(Number(num))) {
     result.error = true;
     result.message = "Invalid Number";
   }
@@ -97,5 +119,12 @@ function numberToWords(num) {
 }
 
 if (typeof require !== "undefined" && typeof module !== "undefined") {
-  module.exports = numberToWords;
+  module.exports = {
+    numberToWords,
+    solveForAfterDecimal
+  };
 }
+
+//one thousand two hundred thirty-three ten-thousandths
+//one thousand and two hundred thirty three hundered-hundredths
+console.log(solveForAfterDecimal("1233000"))
