@@ -62,5 +62,11 @@
             "number" : "12345678911234567891123456789112345678911234567891123456789112345678911234567891123456789112345678911234567891",
             "expectedResult": "Input should be less than 72 chars as digit names in wikipedia is only up to duovigintillion!"
         }
+    ],
+    "decimalTests": [
+        {
+            "number" : "1.223",
+            "expectedResult": "one and two hundred twenty three thousandths"
+        }
     ]
 }
