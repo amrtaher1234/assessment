@@ -1,4 +1,5 @@
-// this is just a script I wrote to crawl wikipedia's table
+// this is just a dom script I wrote to crawl wikipedia's table
+// in chrom's developer tools
 // to identify names of numbers and putting them inside a map.
 
 // I just wanted it to place it over here so you guys know how I generally think.
@@ -13,6 +14,6 @@ for (let i = 1; i < tabletrs.length - 2; i++) {
   try {
     let key = tds.item(1).innerText;
     let value = tds.item(0).innerText;
-    answer[key] = Number(value) + 1;
+    answer[key + 1] = Number(value);
   } catch (err) {}
 }
