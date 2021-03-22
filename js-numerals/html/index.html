@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,31 +8,51 @@
     <title>Number To Words</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300&display=swap" rel="stylesheet">
-    <!-- <script>var exports = {}; var module = {}</script> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500;1,800&display=swap"
+        rel="stylesheet">
     <script src="../helpers.js"></script>
     <script src="../globals.js"></script>
     <script src="../solution.js"></script>
 </head>
+
 <body>
-
     <main>
-        <header>
-            Number To Word Converter
-            <img src="https://img.icons8.com/officel/64/000000/number-pad.png"/>
-            <img src="https://img.icons8.com/dusk/64/000000/ms-word.png"/>
-        </header>
+        <section class="text">
+            <h1>Numbers To Word Converter</h1>
+            <p>write a number to convert it into a phrase.</p>
+            
+            <p>Number limitations:</p>
+            <ul>
+                <li>Number between 1 to 72 digits</li>
+                <li>Decimals are allowed</li>
+                <li>Negative numbers are allowed</li>
+            </ul>
+        </section>
 
-        <input placeholder="Write Number Here" />
-        <p id="answer"></p>
+        <section class="solution">
+            <input placeholder="Number" />
+            <p class="output">Number To Word Converter</p>
+        </section>
+
+
     </main>
+
+
+    <div class="background-wrapper">
+        <div class="background-wrapper__overlay"></div>
+        <img class="background-wrapper__img" src="../assets/bg.jpg" alt="">
+    </div>
 </body>
 
 <script>
     let answerParagraph = document.querySelector('#answer');
-    document.querySelector('input').addEventListener('input', function(e) {
+    document.querySelector('input').addEventListener('input', function (e) {
         const inputText = e.target.value;
-        answerParagraph.textContent = inputText.length ?  numberToWords(inputText) : "";
+        answerParagraph.textContent = inputText.length ? numberToWords(inputText) : "";
     })
 </script>
+
 </html>

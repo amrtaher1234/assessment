@@ -1,11 +1,59 @@
 :root {
-    --font-family: 'Roboto';
-}
+  --font-family: "Poppins"; }
 
-html, body {
-    /* margin: 0; */
-    font-family: var(--font-family);
-}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: var(--font-family); }
+
 main {
-    
-}
+  color: white;
+  position: relative;
+  z-index: 9;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-areas: "text solution" "footer footer";
+  grid-template-rows: 75% 25%;
+  grid-template-columns: 50% 50%; }
+  main nav {
+    grid-area: nav;
+    padding: 0.5em; }
+  main section {
+    padding: 1.5em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column; }
+  main section.text {
+    -webkit-box-shadow: 6px 6px 24px 6px rgba(0, 0, 0, 0.49);
+    box-shadow: 6px 6px 24px 6px rgba(0, 0, 0, 0.49);
+    background-color: white;
+    color: black;
+    grid-area: text; }
+    main section.text h1 {
+      font-weight: 800;
+      font-size: 2em; }
+    main section.text p {
+      margin: 0.2em 0; }
+    main section.text ul {
+      margin: 0; }
+  main section.solution {
+    grid-area: solution; }
+  main footer {
+    grid-area: footer; }
+
+div.background-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0; }
+  div.background-wrapper__overlay {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8); }
+  div.background-wrapper img {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%; }
