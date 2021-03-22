@@ -5,7 +5,8 @@
   "main": "solution.js",
   "scripts": {
     "test": "jest",
-    "scss": "node-sass --watch . -o css"
+    "scss": "node-sass --watch ./styles.scss -o css",
+    "build": "echo \"Buidling Started:\" && jest && node-sass ./styles.scss -o css && echo \"Build Finished\""
   },
   "author": "",
   "license": "ISC",
