@@ -36,6 +36,11 @@ You can input integars between 1~72 digits, I chose up to 72 digits because I fe
 You can also use decimals or negative numbers and the algorithm will figure it out.
 
 
+## How To Run
+
+First build the project using `npm run build`. This will test using Jest then convert the scss to css.
+The `index.html` now could be checked to test the application.
+
 ## Why I coded it that way.
 
 Most of the solution's algorithm works with the input as a string instead of a number, as JavaScript takes up to `10**21` and whatever is bigger is not displayed so I needed to use strings to be able to extract the name of the number exactly as it was typed.
