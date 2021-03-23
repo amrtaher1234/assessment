@@ -45,4 +45,6 @@ There are numerous number of corner cases and invalid cases that is caused becau
 In most of the files I used `modules.export` and `exports` to export my functions to be tested through JEST.
 I also created a JSON to add all of my test cases that contained cornenr cases like `-0.0`, very large numbers, invalid strings and more.
 
+I did not pay much attention to design as much as I did to the code, I also could have created a ReactJS application and added testing to all of its components but the task stated that its just a form.
+
 
