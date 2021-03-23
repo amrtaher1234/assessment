@@ -26,42 +26,45 @@ let NAMES_OF_NUMBERS_WITH_THEIR_DIGIT_COUNT = {
     67: "unvigintillion",
     70: "duovigintillion",
   };
-  
-  let NAMES_OF_DIGITS_BELOW_HUNDRED = {
-    0: "",
-    1: "one",
-    2: "two",
-    3: "three",
-    4: "four",
-    5: "five",
-    6: "six",
-    7: "seven",
-    8: "eight",
-    9: "nine",
-    10: "ten",
-    11: "eleven",
-    12: "tweleve",
-    13: "thirteen",
-    14: "fourteen",
-    15: "fifteen",
-    16: "sixteen",
-    17: "seventeen",
-    18: "eighteen",
-    19: "ninteen",
-    20: "twenty",
-    30: "thirty",
-    40: "fourty",
-    50: "fifty",
-    60: "sixty",
-    70: "sevnty",
-    80: "eighty",
-    90: "ninty",
-  };
-
+  let UNITS_NAMES = [
+    "",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine"
+  ]
+  let TENTH_NAMES = [
+    "",
+    "ten",
+    "twenty",
+    "thirty",
+    "fourty",
+    "fifty",
+    "sixty",
+    "seventy",
+    "eighty",
+    "ninty",
+    "",
+    "eleven",
+    "tweleve",
+    "thirteen",
+    "fourteen",
+    "fifteen",
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen"
+  ]
   var globals = {
-    NAMES_OF_DIGITS_BELOW_HUNDRED,
     NAMES_OF_NUMBERS_WITH_THEIR_DIGIT_COUNT,
     THREE_DIGITS_NAME: 'hundred',
+    UNITS_NAMES,
+    TENTH_NAMES
   }
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = globals

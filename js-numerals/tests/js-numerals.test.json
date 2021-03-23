@@ -1,6 +1,10 @@
 {
     "nDigitsTests": [
         {
+            "number": "19",
+            "expectedResult": "nineteen"
+        },
+        {
             "number": "1",
             "expectedResult": "one"
         },

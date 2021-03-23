@@ -4,23 +4,22 @@ if (typeof require !== "undefined" && typeof require !== null) {
 }
 
 function solveForOneDigit(num) {
-  return `${globals.NAMES_OF_DIGITS_BELOW_HUNDRED[num]}`;
+  return `${globals.UNITS_NAMES[num]}`;
 }
 function solveForTwoDigits(num) {
   if (num < 20) {
-    return `${globals.NAMES_OF_DIGITS_BELOW_HUNDRED[num]}`;
+    return `${globals.TENTH_NAMES[num]}`;
   }
   let firstDigit = Number(num.toString().charAt(0));
   let secondDigit = Number(num.toString().charAt(1));
-  let numWithoutSecondDigit = firstDigit * 10;
   return `${
-    globals.NAMES_OF_DIGITS_BELOW_HUNDRED[numWithoutSecondDigit]
+    globals.TENTH_NAMES[firstDigit]
   } ${solveForOneDigit(secondDigit)}`;
 }
 function solveForThreeDigits(num) {
   let firstDigit = Number(num.toString().charAt(0));
   let twoDigitsNum = Number(num.toString().substr(1));
-  return `${globals.NAMES_OF_DIGITS_BELOW_HUNDRED[firstDigit]} ${
+  return `${solveForOneDigit(firstDigit)} ${
     globals.THREE_DIGITS_NAME
   } ${solveForTwoDigits(twoDigitsNum)}`;
 }
@@ -63,7 +62,7 @@ function solveForN(num) {
 function solveForAfterDecimal(num) {
   num = helpers.removeTrailingZeros(num);
   if (!num.length) return '';
-  let numLength = num.length + 1; // for the decimal point = 5
+  let numLength = num.length + 1; // for the decimal point;
   let delimter = '';
   let digitNameIndex = numLength ;
   let answer = `${solveForN(helpers.removeLeadingZeros(num))}`;
