@@ -31,8 +31,9 @@ main {
   display: grid;
   grid-template-areas:
     "nav nav nav"
-    "input gap solution";
-  grid-template-columns: 45% 10% 45%;
+    "input input input"
+    "solution solution solution";
+    grid-template-columns: 45% 10% 45%;
   nav {
     grid-area: nav;
     h1 {
